@@ -2,7 +2,7 @@ from pytest_tezos.TestTypes import Nat
 
 
 def test_ligo(tezos, ligo):
-    assert ligo.bin.endswith('bin/ligo')
+    assert ligo.bin.exists()
     assert ligo.compile('contract.mligo')
     assert ligo.compile(Nat(0))
     originate = ligo.compile('contract.mligo').originate(
