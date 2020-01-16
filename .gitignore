@@ -1,0 +1,11 @@
+.eggs/
+__pycache__/
+contract.pp.mligo
+contract.tz
+control.tar.xz
+data.tar.xz
+debian-binary
+dist/
+multisig-v2.ligo
+pytest_ligo.egg-info/
+

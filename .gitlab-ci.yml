@@ -1,0 +1,11 @@
+image: yourlabs/python
+
+pytest:
+  stage: test
+    script:
+    - pip install --user .
+    - py.test -v
+
+pypi:
+  stage: deploy
+    script: pypi-release
