@@ -46,8 +46,10 @@ class Ligo:
                 tar xvf data.tar.xz
                 mkdir -p ~/.local/bin
                 cp bin/ligo ~/.local/bin
-                if ! grep local/bin ~/.bash_profile; then
+                if test -f ~/.bash_profile; then
+                  if ! grep local/bin ~/.bash_profile; then
                     echo 'export PATH="$HOME/.local/bin:$PATH"' > ~/.bash_profile
+                  fi
                 fi
             ''', shell=True)
             os.chdir(old_cwd)
