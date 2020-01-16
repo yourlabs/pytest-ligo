@@ -1,1 +1,1 @@
-pytest-tezos>=0.1.2
+pytest-tezos>=0.1.3

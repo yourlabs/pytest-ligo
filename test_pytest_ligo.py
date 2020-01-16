@@ -32,10 +32,8 @@ def test_ligo_tezos_integration(ligo, tezos):
     ci = tezos.client.contract(contract_address)
     assert ci
     assert ci.storage() == 0
-    return
 
     opg = tezos.wait(ci.add(3))
-    time.sleep(3)
 
     ci = tezos.client.contract(contract_address)
     assert ci.storage() == 3
