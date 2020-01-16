@@ -2,10 +2,13 @@ image: yourlabs/python
 
 pytest:
   stage: test
-    script:
-    - pip install --user .
-    - py.test -v
+  script:
+  - pip install .
+  - py.test -v
+  services:
+  - name: yourlabs/tezos
+    alias: tz
 
 pypi:
   stage: deploy
-    script: pypi-release
+  script: pypi-release
