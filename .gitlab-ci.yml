@@ -1,6 +1,5 @@
-image: yourlabs/python
-
 pytest:
+  image: yourlabs/pytezos
   stage: test
   script:
   - pip install .
@@ -12,3 +11,4 @@ pytest:
 pypi:
   stage: deploy
   script: pypi-release
+  image: yourlabs/python
