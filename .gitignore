@@ -1,3 +1,5 @@
+bin
+download*
 .eggs/
 __pycache__/
 contract.pp.mligo

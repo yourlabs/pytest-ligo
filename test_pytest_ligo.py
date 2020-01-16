@@ -6,7 +6,7 @@ def test_ligo(tezos, ligo):
     assert ligo.compile('contract.mligo')
     assert ligo.compile(Nat(0))
     originate = ligo.compile('contract.mligo').originate(
-        tezos.clients[0],
+        tezos.client,
         Nat(0),
     )
     assert originate.inject
@@ -14,12 +14,12 @@ def test_ligo(tezos, ligo):
 
 def test_compile_originate_wait(tezos, ligo):
     assert tezos.wait(ligo.compile('contract.mligo').originate(
-            tezos.clients[0], Nat(0)).inject())
+            tezos.client, Nat(0)).inject())
 
 
 def test_ligo_tezos_integration(ligo, tezos):
     tx = ligo.compile('contract.mligo').originate(
-        tezos.clients[0],
+        tezos.client,
         Nat(0),
     )
 
@@ -29,7 +29,7 @@ def test_ligo_tezos_integration(ligo, tezos):
     contract_address = tezos.contract_address(origination)
     assert contract_address
 
-    ci = tezos.clients[0].contract(contract_address)
+    ci = tezos.client.contract(contract_address)
     assert ci
     assert ci.storage() == 0
     return
@@ -37,5 +37,5 @@ def test_ligo_tezos_integration(ligo, tezos):
     opg = tezos.wait(ci.add(3))
     time.sleep(3)
 
-    ci = tezos.clients[0].contract(contract_address)
+    ci = tezos.client.contract(contract_address)
     assert ci.storage() == 3
