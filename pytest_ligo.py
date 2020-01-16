@@ -29,7 +29,7 @@ class Contract:
 class Ligo:
     @property
     def bin(self):
-        loc = Path(__file__) / '..' / 'bin' / 'ligo'
+        loc = Path(os.path.dirname(__file__)) / 'bin' / 'ligo'
         if loc.exists():
             return loc
 
@@ -50,6 +50,7 @@ class Ligo:
                     echo 'export PATH="$HOME/.local/bin:$PATH"' > ~/.bash_profile
                 fi
             ''', shell=True)
+            os.chdir(old_cwd)
         return loc
 
     def compile(self, arg):
