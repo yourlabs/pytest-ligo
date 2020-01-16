@@ -13,6 +13,6 @@ touch ~/.bash_profile
 if ! grep local/bin ~/.bash_profile; then
     echo 'export PATH="$HOME/.local/bin:$PATH"' > ~/.bash_profile
 fi
-if [ "$USER" = "root" ]; then
+if [[ -n "${USER-}" && "$USER" = "root" ]]; then
     ln -sfn ~/.local/bin/ligo /bin/ligo
 fi
