@@ -1,7 +1,6 @@
-image: yourlabs/python
-
 pytest:
   stage: test
+  image: yourlabs/tezos
   script:
   - pip install .
   - py.test -v
@@ -11,4 +10,5 @@ pytest:
 
 pypi:
   stage: deploy
+  image: yourlabs/python
   script: pypi-release
